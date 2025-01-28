@@ -10,13 +10,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import dayjs from '#build/dayjs.imports.mjs';
 import type { Task } from '@prisma/client';
 
 const props = defineProps<{
   task: Task;
 }>();
 
+const dayjs = useDayjs()
 const { updateState } = useUpdateTask();
 
 const getDealineFromNow = computed(() => {

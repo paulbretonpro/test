@@ -24,5 +24,6 @@ import type { Task } from '@prisma/client';
 
 const { data, status } = useLazyFetch<Task[]>('/api/dashboard/to-schedule', {
   default: () => [],
+  headers: useRequestHeaders(['cookie'])
 })
 </script>

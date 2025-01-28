@@ -21,5 +21,7 @@
 <script setup lang="ts">
 import type { Task } from '@prisma/client';
 
-const { data, status } = useLazyFetch<Task[]>('/api/dashboard/deadline-past')
+const { data, status } = useLazyFetch<Task[]>('/api/dashboard/deadline-past', {
+  headers: useRequestHeaders(['cookie'])
+})
 </script>
