@@ -3,32 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "npx prisma generate && nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "npx prisma generate && nuxt prepare"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxt/ui": "^2.20.0",
-    "@nuxtjs/supabase": "^1.4.6",
-    "@pinia/nuxt": "^0.9.0",
-    "@prisma/client": "^6.2.1",
-    "@prisma/nuxt": "^0.1.3",
-    "dayjs-nuxt": "^2.1.11",
-    "nitropack": "^2.9.7",
-    "nuxt": "^3.14.0",
-    "pinia": "^2.3.0",
-    "prisma": "^6.1.0",
-    "vue": "^3.5"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@formkit/auto-animate": "^0.8.2",
-    "@supabase/supabase-js": "^2.48.1",
+    "nuxt": "^3.15.4",
     "vue": "latest",
-    "vue-router": "latest",
-    "vue3-spinners": "^1.2.2",
-    "zod": "^3.24.1"
+    "vue-router": "latest"
   }
 }
