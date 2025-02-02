@@ -6,45 +6,43 @@
     <div
       class="bg-white border border-gray-200 shadow-lg rounded-md flex gap-2 justify-evenly py-4"
     >
-      <ClientOnly>
-        <NuxtLink>
-          <UButton
-            :variant="getVariantByRoutePath('/')"
-            icon="i-heroicons-calendar-days"
+      <NuxtLink>
+        <UButton
+          :variant="getVariantByRoutePath('/')"
+          icon="i-heroicons-calendar-days"
+        />
+      </NuxtLink>
+      <NuxtLink to="/tasks/todo">
+        <UChip size="2xl" :text="countTasks.todo" :show="countTasks.todo > 0"
+          ><UButton
+            :variant="getVariantByRoutePath('/tasks/todo')"
+            icon="i-heroicons-clipboard-document-list"
           />
-        </NuxtLink>
-        <NuxtLink to="/tasks/todo">
-          <UChip size="2xl" :text="countTasks.todo" :show="countTasks.todo > 0"
-            ><UButton
-              :variant="getVariantByRoutePath('/tasks/todo')"
-              icon="i-heroicons-clipboard-document-list"
-            />
-          </UChip>
-        </NuxtLink>
-        <NuxtLink to="/tasks/pending">
-          <UChip
-            size="2xl"
-            :text="countTasks.pending"
-            :show="countTasks.pending > 0"
-            ><UButton
-              :variant="getVariantByRoutePath('/tasks/pending')"
-              icon="i-heroicons-clock"
-            />
-          </UChip>
-        </NuxtLink>
-        <NuxtLink to="/tasks/done">
-          <UButton
-            :variant="getVariantByRoutePath('/tasks/done')"
-            icon="i-heroicons-clipboard-document-check"
+        </UChip>
+      </NuxtLink>
+      <NuxtLink to="/tasks/pending">
+        <UChip
+          size="2xl"
+          :text="countTasks.pending"
+          :show="countTasks.pending > 0"
+          ><UButton
+            :variant="getVariantByRoutePath('/tasks/pending')"
+            icon="i-heroicons-clock"
           />
-        </NuxtLink>
-        <NuxtLink to="/settings">
-          <UButton
-            :variant="getVariantByRoutePath('/settings')"
-            icon="i-heroicons-adjustments-horizontal"
-          />
-        </NuxtLink>
-      </ClientOnly>
+        </UChip>
+      </NuxtLink>
+      <NuxtLink to="/tasks/done">
+        <UButton
+          :variant="getVariantByRoutePath('/tasks/done')"
+          icon="i-heroicons-clipboard-document-check"
+        />
+      </NuxtLink>
+      <NuxtLink to="/settings">
+        <UButton
+          :variant="getVariantByRoutePath('/settings')"
+          icon="i-heroicons-adjustments-horizontal"
+        />
+      </NuxtLink>
     </div>
   </div>
 </template>
