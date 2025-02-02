@@ -8,32 +8,28 @@
     >
       <NuxtLink>
         <UButton
-          :variant="getVariantByRoutePath('/')"
           icon="i-heroicons-calendar-days"
         />
       </NuxtLink>
-      <NuxtLink to="/tasks/todo">
+      <NuxtLink>
         <UChip size="2xl" :text="countTasks.todo" :show="countTasks.todo > 0"
           ><UButton
-            :variant="getVariantByRoutePath('/tasks/todo')"
             icon="i-heroicons-clipboard-document-list"
           />
         </UChip>
       </NuxtLink>
-      <NuxtLink to="/tasks/pending">
+      <NuxtLink>
         <UChip
           size="2xl"
           :text="countTasks.pending"
           :show="countTasks.pending > 0"
           ><UButton
-            :variant="getVariantByRoutePath('/tasks/pending')"
             icon="i-heroicons-clock"
           />
         </UChip>
       </NuxtLink>
-      <NuxtLink to="/tasks/done">
+      <NuxtLink>
         <UButton
-          :variant="getVariantByRoutePath('/tasks/done')"
           icon="i-heroicons-clipboard-document-check"
         />
       </NuxtLink>

@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     defaultLocale: "fr",
     defaultTimezone: "Europe/Paris",
   },
+  colorMode: {
+    preference: "light",
+  },
   tailwindcss: {
     config: {
       theme: {
