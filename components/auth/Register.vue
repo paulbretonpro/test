@@ -38,8 +38,8 @@ const emit = defineEmits<{
   'update:stateCard': [void],
 }>()
 
-//const client = useSupabaseClient()
-//const user = useSupabaseUser()
+const client = useSupabaseClient()
+const user = useSupabaseUser()
 const toast = useToast()
 
 const userForm = ref({
@@ -50,23 +50,23 @@ const userForm = ref({
 
 const onSubmitRegister = async () => {
   try {
-    // const { data, error } = await client.auth.signUp({
-    //   email: userForm.value.email,
-    //   password: userForm.value.password,
-    // });
+    const { data, error } = await client.auth.signUp({
+      email: userForm.value.email,
+      password: userForm.value.password,
+    });
 
-    // if(error) {
-    //   throw error
-    // }
+    if(error) {
+      throw error
+    }
 
-    // await $fetch("api/user", {
-    //   method: "POST",
-    //   body: {
-    //     id: data?.user?.id,
-    //     email: userForm.value.email,
-    //     name: userForm.value.name,
-    //   },
-    // });
+    await $fetch("/api/user", {
+      method: "POST",
+      body: {
+        id: data?.user?.id,
+        email: userForm.value.email,
+        name: userForm.value.name,
+      },
+    });
 
     toast.add({
       color: "green",

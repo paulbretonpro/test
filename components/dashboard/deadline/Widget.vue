@@ -21,7 +21,5 @@
 <script setup lang="ts">
 import type { Task } from '@prisma/client';
 
-// const { data, status } = useLazyFetch<Task[]>('api/dashboard/deadline-past')
-const data = ref<Task[]>([])
-const status = ref('success')
+const { data, status } = useLazyFetch<Task[]>('/api/dashboard/deadline-past')
 </script>

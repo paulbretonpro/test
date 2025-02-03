@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+  schemas         = ["auth", "public"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id    String  @id
+  email String  @unique
+  name  String?
+
+  tasks      Task[]
+  categories Category[]
+}
+
+model Task {
+  id         Int       @id @default(autoincrement())
+  categoryId Int
+  content    String?
+  deadline   DateTime  @default(now())
+  priority   Int       @default(2)
+  state      TaskState @default(TODO)
+  title      String
+  userId     String
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+
+  category Category @relation(fields: [categoryId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+}
+
+model Category {
+  id     Int     @id @default(autoincrement())
+  color  String?
+  icon   String?
+  name   String
+  userId String?
+
+  user  User?  @relation(fields: [userId], references: [id])
+  tasks Task[]
+}
+
+enum TaskState {
+  PENDING
+  TODO
+  DONE
+  TO_SCHEDULE
+}

@@ -15,19 +15,17 @@ export const useTasksStore = defineStore("tasks", () => {
 
   const addNewTask = async (task: Partial<Task>) => {
     try {
-      console.log('Add new task');
-      
-      // return await $fetch("api/tasks", {
-        // method: "POST",
-        // body: {
-          // title: task.title,
-          // content: task.content,
-          // categoryId: task.categoryId,
-          // deadline: task.deadline,
-          // state: task.state,
-          // priority: task.priority,
-        // },
-      // });
+      return await $fetch("/api/tasks", {
+        method: "POST",
+        body: {
+          title: task.title,
+          content: task.content,
+          categoryId: task.categoryId,
+          deadline: task.deadline,
+          state: task.state,
+          priority: task.priority,
+        },
+      });
     } catch (error) {
       toast.add({
         title: "Erreur",
@@ -41,19 +39,15 @@ export const useTasksStore = defineStore("tasks", () => {
 
   const fetchTasksCount = async () => {
     try {
-      // countTasks.value = await $fetch<{ todo: number; pending: number }>(
-        // "api/tasks/counts",
-        // {
-          // query: {
-            // startDate: dayjs().set("hour", 0).set("minute", 0).toISOString(),
-            // endDate: dayjs().set("hour", 23).set("minute", 59).toISOString(),
-          // },
-        // }
-      // );
-      countTasks.value = {
-        pending: 0,
-        todo: 0
-      }
+      countTasks.value = await $fetch<{ todo: number; pending: number }>(
+        "/api/tasks/counts",
+        {
+          query: {
+            startDate: dayjs().set("hour", 0).set("minute", 0).toISOString(),
+            endDate: dayjs().set("hour", 23).set("minute", 59).toISOString(),
+          },
+        }
+      );
     } catch (error) {
       toast.add({
         title: "Erreur",
@@ -65,8 +59,8 @@ export const useTasksStore = defineStore("tasks", () => {
 
   const fetchTaskByState = async (state: TaskState) => {
     try {
-      //const data = await $fetch<Task[]>("api/tasks", { query: { state } });
-      setTasksListByState(state, []);
+      const data = await $fetch<Task[]>("/api/tasks", { query: { state } });
+      setTasksListByState(state, data);
     } catch (error) {
       toast.add({
         title: "Erreur",
@@ -92,11 +86,10 @@ export const useTasksStore = defineStore("tasks", () => {
 
   const updateTask = async (task: Task) => {
     try {
-      // await $fetch<Task>(`api/tasks/${task.id}`, {
-        // method: "PUT",
-        // body: task,
-      // });
-      console.log('Update task');      
+      await $fetch<Task>(`/api/tasks/${task.id}`, {
+        method: "PUT",
+        body: task,
+      });
     } catch (error) {
       toast.add({
         title: "Erreur",

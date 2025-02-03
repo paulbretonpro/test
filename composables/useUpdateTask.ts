@@ -14,12 +14,12 @@ const { updateTask, removeTask } = useTasksStore();
 
     removeTask(task)
   
-    //await fetchTaskByState(task.state);
+    // await fetchTaskByState(task.state);
   };
 
   const deleteTask = async (task: Task) => {
-    //await $fetch(`api/tasks/${task.id}`, { method: "DELETE" });
-    //await fetchTaskByState(task.state);
+    await $fetch(`/api/tasks/${task.id}`, { method: "DELETE" });
+    // await fetchTaskByState(task.state);
   }
 
   return {

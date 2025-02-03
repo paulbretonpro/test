@@ -12,7 +12,7 @@ definePageMeta({
   layout: 'auth-layout'
 })
 
-// const user = useSupabaseUser()
+const user = useSupabaseUser()
 const { fetch } = useUserStore()
 
 const stateCard = ref<"login" | "register">("login");
@@ -21,9 +21,9 @@ const handleUpdateStateCard = (state: "login" | "register") => {
   stateCard.value = state;
 }
 
-// watchEffect(async () => {
-  // if (user.value) {
-    // navigateTo("/");
-  // }
-// })
+watchEffect(async () => {
+  if (user.value) {
+    navigateTo("/");
+  }
+})
 </script>

@@ -19,29 +19,28 @@ export default function (state: TaskState) {
     }
   });
 
-  // const { refresh } = useFetch<Task[]>("api/tasks", {
-    // query: { 
-      // state,
-      // startDate: dayjs().set("hour", 0).set("minute", 0).toISOString(),
-      // endDate: dayjs().set("hour", 23).set("minute", 59).toISOString(),
-    // },
-    // key: `tasks-${state}`,
-    // default: () => [],
-    // onResponse: (response) => {
-      // setTasksListByState(state, response.response._data);
-    // },
-    // onRequestError: (error) => {
-      // toast.add({
-        // title: "Erreur",
-        // description: "Impossible de récupérer les tâches",
-        // color: "red",
-      // });
-    // },
-  // });
+  const { refresh } = useFetch<Task[]>("/api/tasks", {
+    query: { 
+      state,
+      startDate: dayjs().set("hour", 0).set("minute", 0).toISOString(),
+      endDate: dayjs().set("hour", 23).set("minute", 59).toISOString(),
+    },
+    key: `tasks-${state}`,
+    default: () => [],
+    onResponse: (response) => {
+      setTasksListByState(state, response.response._data);
+    },
+    onRequestError: (error) => {
+      toast.add({
+        title: "Erreur",
+        description: "Impossible de récupérer les tâches",
+        color: "red",
+      });
+    },
+  });
 
   return {
     tasks,
-    refresh: () => { console.log('refresh');
-    },
+    refresh
   };
 }

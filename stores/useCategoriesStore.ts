@@ -9,8 +9,7 @@ export const useCategoryStore = defineStore("categoires", () => {
   const fetch = async () => {
     loading.value = true;
     try {
-      // categories.value = await $fetch<Category[]>("api/categories");
-      categories.value = [];
+      categories.value = await $fetch<Category[]>("/api/categories");
     } catch {
       toast.add({
         title: "Erreur",

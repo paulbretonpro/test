@@ -4,16 +4,16 @@
   </UContainer>
 </template>
 <script setup lang="ts">
-// definePageMeta({
-//   middleware: 'auth'
-// })
+definePageMeta({
+  middleware: 'auth'
+})
 
-// const client = useSupabaseClient()
-// 
-// const user = useSupabaseUser()
+const client = useSupabaseClient()
+
+const user = useSupabaseUser()
 
 const handleLogout = async () => {
-  // await client.auth.signOut()
+  await client.auth.signOut()
   
   navigateTo("/login")
 }

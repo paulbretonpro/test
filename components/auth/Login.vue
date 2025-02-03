@@ -32,7 +32,7 @@ const emit = defineEmits<{
   'update:stateCard': [void],
 }>()
 
-// const client = useSupabaseClient()
+const client = useSupabaseClient()
 const toast = useToast()
 
 const userForm = ref({
@@ -42,10 +42,10 @@ const userForm = ref({
 
 const onSubmit = async () => {
   try {
-    // await client.auth.signInWithPassword({
-      // email: userForm.value.email,
-      // password: userForm.value.password,
-    // });
+    await client.auth.signInWithPassword({
+      email: userForm.value.email,
+      password: userForm.value.password,
+    });
 
     navigateTo("/")
   } catch (error) {

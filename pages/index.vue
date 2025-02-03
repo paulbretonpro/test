@@ -11,5 +11,8 @@
   <TasksButtonAdd />  
 </template>
 <script setup lang="ts">
+definePageMeta({
+  layout: 'base-layout'
+})
 const { user } = storeToRefs(useUserStore())
 </script>
