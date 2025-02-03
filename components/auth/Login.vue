@@ -42,10 +42,12 @@ const userForm = ref({
 
 const onSubmit = async () => {
   try {
-    await client.auth.signInWithPassword({
+    const login = await client.auth.signInWithPassword({
       email: userForm.value.email,
       password: userForm.value.password,
     });
+
+    console.log(login);    
 
     navigateTo("/")
   } catch (error) {
