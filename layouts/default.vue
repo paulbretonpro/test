@@ -6,19 +6,14 @@
     <div
       class="bg-white border border-gray-200 shadow-lg rounded-md flex gap-2 justify-evenly py-4"
     >
-      <NuxtLink>
         <UButton
           icon="i-heroicons-calendar-days"
         />
-      </NuxtLink>
-      <NuxtLink>
         <UChip size="2xl" :text="countTasks.todo" :show="countTasks.todo > 0"
           ><UButton
             icon="i-heroicons-clipboard-document-list"
           />
         </UChip>
-      </NuxtLink>
-      <NuxtLink>
         <UChip
           size="2xl"
           :text="countTasks.pending"
@@ -27,18 +22,13 @@
             icon="i-heroicons-clock"
           />
         </UChip>
-      </NuxtLink>
-      <NuxtLink>
         <UButton
           icon="i-heroicons-clipboard-document-check"
         />
-      </NuxtLink>
-      <NuxtLink to="/settings">
         <UButton
           :variant="getVariantByRoutePath('/settings')"
           icon="i-heroicons-adjustments-horizontal"
         />
-      </NuxtLink>
     </div>
   </div>
 </template>
